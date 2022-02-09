@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     Login() {
-      this.$router.push('/home');
+      this.$router.push('/aoteman/saijia');
     }
   }
 }

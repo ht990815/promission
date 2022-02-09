@@ -2,40 +2,55 @@
   <el-container>
     <el-aside width="200px">
       <el-menu
-        default-active="2"
+        router
+        mode='vertical'
+        :default-active="curRouter"
         class="el-menu-vertical-demo"
-        background-color="black"
+        background-color="#1C2A39"
         text-color="#fff"
-        active-text-color="#ffd04b">
-        <el-menu-item index="2">
-          <router-link to="/saijia">
-            <i class="el-icon-menu"></i>
-            <span slot="title">赛迦</span>  
-          </router-link>
+        active-text-color="#19B5FE">
+
+        <el-menu-item index="/aoteman/saijia">
+          <i class="el-icon-menu"></i>
+          <span slot="title">赛迦</span>
         </el-menu-item>
-        <el-menu-item index="4">
+
+        <el-menu-item index="/aoteman/aotezhiwang">
           <i class="el-icon-setting"></i>
           <span slot="title">奥特之王</span>
         </el-menu-item>
+
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-location"></i>
-            <span>奥特曼</span>
+            <span>最喜欢奥特曼</span>
           </template>
           <el-menu-item-group>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
+            <el-menu-item index="/aoteman/aotelike/dijia">迪迦</el-menu-item>
+            <el-menu-item index="/aoteman/aotelike/aidi">艾迪</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
+
+        <el-menu-item index="/aoteman/jieke">
+          <i class="el-icon-setting"></i>
+          <span slot="title">杰克</span>
+        </el-menu-item>
+
       </el-menu>
     </el-aside>
-    <el-main>Main</el-main>
+    <el-main>
+      <router-view></router-view>
+    </el-main>
   </el-container>
 </template>
 
 <script>
 export default {
-
+  computed: {
+    curRouter() {
+      return this.$route.path;
+    }
+  }
 }
 </script>
 
