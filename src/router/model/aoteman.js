@@ -1,49 +1,59 @@
 import home from '@/views/layout/home.vue'
 
-module.exports = [
-  // {
-  //   path: "/aoteman",
-  //   redirect: '/aoteman/home'
-  // },
-  {
-    path: '/aoteman/saijia',
-    name: 'saijia',
-    meta: { like: 'aoteman', title: "赛迦奥特曼" },
-    component: home,
-    children: [
-      {
-        component: () => import('@/views/comps/saijia.vue')
-      }
-    ]
-  },
-  {
-    path: '/aoteman/aotezhiwang',
-    name: 'aotezhiwang',
-    meta: { like: 'aoteman', title: "奥特之王" },
-    component: () => import('@/views/comps/aotezhiwang.vue')
-  },
-  {
-    path: "/aoteman/aotelike",
-    meta: { like: 'aoteman', title: "最喜欢的奥特曼" },
-    children: [
-      {
-        path: 'dijia',
-        name: 'dijia',
-        meta: { like: 'aoteman', title: "迪迦奥特曼" },
-        component: () => import('@/views/comps/dijia.vue')
-      },
-      {
-        path: 'aidi',
-        name: 'aidi',
-        meta: { like: 'aoteman', title: "艾迪奥特曼" },
-        component: () => import('@/views/comps/aidi.vue')
-      }
-    ]
-  },
-  {
-    path: '/aoteman/jieke',
-    name: 'jieke',
-    meta: { like: 'aoteman', title: "杰克奥特曼" },
-    component: () => import('@/views/comps/jieke.vue')
-  }
+const aoteman = [
+	{
+		path: '/aoteman/jieke',
+		meta: { role: 'aoteman' },
+		component: home,
+		children: [
+			{
+				path: 'index',
+				meta: { title: '杰克', icon: 'el-icon-s-goods' },
+				component: () => import('@/views/comps/jieke.vue')
+			}
+		]
+	},
+	{
+		path: '/aoteman/like',
+		meta: { title: '喜欢的aoteman', role: 'aoteman', icon: 'el-icon-star-off' },
+		component: home,
+		children: [
+			{
+				path: 'index',
+				meta: { title: '赛迦' },
+				component: () => import('@/views/comps/saijia.vue')
+			},
+			{
+				path: 'aotezhiwang',
+				meta: { title: '奥特之王' },
+				component: () => import('@/views/comps/aotezhiwang.vue')
+			}
+		]
+	},
+	{
+		path: '/aoteman/dijia',
+		meta: { role: 'aoteman' },
+		component: home,
+		children: [
+			{
+				path: 'index',
+				meta: { title: '迪迦', icon: 'el-icon-info' },
+				component: () => import('@/views/comps/dijia.vue'),
+			}
+		]
+	},
+	{
+		path: '/aoteman/aidi',
+		meta: { role: 'aoteman' },
+		component: home,
+		children: [
+			{
+				path: 'index',
+				meta: { title: '艾迪', icon: 'el-icon-s-help' },
+				component: () => import('@/views/comps/aidi.vue')
+			}
+		]
+	}
 ]
+
+export default aoteman;

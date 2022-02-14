@@ -9,32 +9,50 @@
         background-color="#1C2A39"
         text-color="#fff"
         active-text-color="#19B5FE">
+				<!-- <el-menu-item index="/aoteman/jieke/index">
+					<i class="el-icon-setting"></i>
+					<span slot="title">杰克</span>
+				</el-menu-item> -->
 
-        <el-menu-item index="/aoteman/saijia">
-          <i class="el-icon-menu"></i>
-          <span slot="title">赛迦</span>
-        </el-menu-item>
-
-        <el-menu-item index="/aoteman/aotezhiwang">
-          <i class="el-icon-setting"></i>
-          <span slot="title">奥特之王</span>
-        </el-menu-item>
-
-        <el-submenu index="1">
+       <el-submenu index="/aoteman/like">
           <template slot="title">
             <i class="el-icon-location"></i>
             <span>最喜欢奥特曼</span>
           </template>
-          <el-menu-item-group>
-            <el-menu-item index="/aoteman/aotelike/dijia">迪迦</el-menu-item>
-            <el-menu-item index="/aoteman/aotelike/aidi">艾迪</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
-
-        <el-menu-item index="/aoteman/jieke">
-          <i class="el-icon-setting"></i>
-          <span slot="title">杰克</span>
-        </el-menu-item>
+					<el-menu-item-group>
+					  <el-menu-item index="index">赛迦</el-menu-item>
+					</el-menu-item-group>
+					<el-menu-item-group>
+					  <el-menu-item index="aotezhiwang">奥特之王</el-menu-item>
+					</el-menu-item-group>
+        </el-submenu> -->
+				
+			<!-- 	<el-menu-item index="/aoteman/dijia/index">
+					<i class="el-icon-setting"></i>
+					<span slot="title">迪迦</span>
+				</el-menu-item>
+				
+				<el-menu-item index="/aoteman/aidi/index">
+					<i class="el-icon-setting"></i>
+					<span slot="title">艾迪</span>
+				</el-menu-item>
+				
+				<el-menu-item index="/kaijia/yanlong/index">
+					<i class="el-icon-setting"></i>
+					<span slot="title">炎龙</span>
+				</el-menu-item>
+				
+				<el-menu-item index="/kaijia/heixi/index">
+					<i class="el-icon-setting"></i>
+					<span slot="title">黑犀</span>
+				</el-menu-item>
+				
+				<!-- <SidebarItem 
+				  v-for="(item,index) in routers" 
+					:index='item.path'
+					:item='item'
+					:basepath='item.path'
+				/> -->
 
       </el-menu>
     </el-aside>
@@ -45,12 +63,27 @@
 </template>
 
 <script>
+import SidebarItem from '@/views/component/SidebarItem.vue'
+	
 export default {
+	data() {
+		return {
+			routers: []
+		}
+	},
+	created() {
+		this.routers = this.$router.options.routes;
+		console.log(this.routers)
+	},
   computed: {
     curRouter() {
+			console.log(this.$route.path)
       return this.$route.path;
     }
-  }
+  },
+	components: {
+		SidebarItem
+	}
 }
 </script>
 
